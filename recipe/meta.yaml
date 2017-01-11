@@ -26,7 +26,7 @@ source:
   
 build:
   number: 0
-  skip: True  # [not py35]
+  skip: True  # [not py35 and unix]
   script:                                                  # [win]
       - mkdir %SCRIPTS%                                    # [win]
       - copy doxygen.exe %SCRIPTS%\ || goto :eof           # [win]
