@@ -28,7 +28,7 @@ source:
     - doxygen-1.8.13-NULL-dereference.patch
   
 build:
-  number: 0
+  number: 1
   skip: True  # [not py35 and unix]
   script:                                                  # [win]
       - mkdir %SCRIPTS%                                    # [win]
