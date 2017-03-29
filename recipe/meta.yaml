@@ -25,7 +25,7 @@ source:
     - find_iconv.patch                                                           # [not win]
     # Doxygen 1.8.13 sometimes segfaults when building the XML output:
     # https://github.com/doxygen/doxygen/pull/555
-    - doxygen-1.8.13-NULL-dereference.patch
+    - doxygen-1.8.13-NULL-dereference.patch                                      # [not win]
   
 build:
   number: 1
