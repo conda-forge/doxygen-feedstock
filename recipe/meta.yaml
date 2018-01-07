@@ -1,5 +1,5 @@
 {% set name = "doxygen" %}
-{% set version = "1.8.13" %}
+{% set version = "1.8.14" %}
 
 package:
   name: {{ name|lower }}
@@ -8,27 +8,18 @@ package:
 source:
   fn: {{ name }}-{{ version }}.src.tar.gz                                                  # [not win]
   url: ftp://ftp.stack.nl/pub/users/dimitri/{{ name }}-{{ version }}.src.tar.gz            # [not win]
-  sha256: af667887bd7a87dc0dbf9ac8d86c96b552dfb8ca9c790ed1cbffaa6131573f6b                 # [not win]
+  sha256: d1757e02755ef6f56fd45f1f4398598b920381948d6fcfa58f5ca6aa56f59d4d                 # [not win]
 
   fn: {{ name }}-{{ version }}.windows.bin.zip                                             # [win32]
   url: http://ftp.stack.nl/pub/users/dimitri/{{ name }}-{{ version }}.windows.bin.zip      # [win32]
-  sha256: 215800d19d0e77fa400694af74685bbd3000463f0d7f18b6c7b743d2d6a1422f                 # [win32]
+  sha256: c88e2ff9b5a27a255e8d4c655cd63f5a6c3786e016ce7c88fc585cc58f2c8704                 # [win32]
 
   fn: {{ name }}-{{ version }}.windows.x64.bin.zip                                         # [win64]
   url: http://ftp.stack.nl/pub/users/dimitri/{{ name }}-{{ version }}.windows.x64.bin.zip  # [win64]
-  sha256: c59e92ab9f82e156723dd3efb9433948dcb84facc21d6efb50f4d6c2d7aa6c5c                 # [win64]
+  sha256: 742f77a3a55ae438076958e7103e95864fd8ed62ee86ce203e092a6792618f9c                 # [win64]
 
-  patches:                                                                       # [not win]
-    - doxygen_test_patch.diff                                                    # [not win]
-    # CMake finds iconv_open in glibc, but finds iconv.h from libiconv.
-    # Make sure both are found from one place.
-    - find_iconv.patch                                                           # [not win]
-    # Doxygen 1.8.13 sometimes segfaults when building the XML output:
-    # https://github.com/doxygen/doxygen/pull/555
-    - doxygen-1.8.13-NULL-dereference.patch                                      # [not win]
-  
 build:
-  number: 1
+  number: 0
   skip: True  # [not py35 and unix]
   script:                                                  # [win]
       - mkdir %SCRIPTS%                                    # [win]
