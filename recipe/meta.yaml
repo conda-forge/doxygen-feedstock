@@ -18,6 +18,11 @@ source:
   url: http://ftp.stack.nl/pub/users/dimitri/{{ name }}-{{ version }}.windows.x64.bin.zip  # [win64]
   sha256: 742f77a3a55ae438076958e7103e95864fd8ed62ee86ce203e092a6792618f9c                 # [win64]
 
+  patches:                                                                       # [not win]
+    # CMake finds iconv_open in glibc, but finds iconv.h from libiconv.
+    # Make sure both are found from one place.
+    - find_iconv.patch                                                           # [not win]
+
 build:
   number: 0
   skip: True  # [not py35 and unix]
