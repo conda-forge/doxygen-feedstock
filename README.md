@@ -20,14 +20,16 @@ Fortran, VHDL, Tcl, and to some extent D.
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/doxygen-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/doxygen-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/doxygen-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/doxygen-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/doxygen-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/doxygen-feedstock/branch/master)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/doxygen-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/doxygen-feedstock/branch/master)
+![Linux disabled](https://img.shields.io/badge/linux-disabled-lightgrey.svg)
+![OSX disabled](https://img.shields.io/badge/OSX-disabled-lightgrey.svg)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/doxygen/badges/version.svg)](https://anaconda.org/conda-forge/doxygen)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/doxygen/badges/downloads.svg)](https://anaconda.org/conda-forge/doxygen)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-doxygen-green.svg)](https://anaconda.org/conda-forge/doxygen) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/doxygen.svg)](https://anaconda.org/conda-forge/doxygen) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/doxygen.svg)](https://anaconda.org/conda-forge/doxygen) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/doxygen.svg)](https://anaconda.org/conda-forge/doxygen) |
 
 Installing doxygen
 ==================
