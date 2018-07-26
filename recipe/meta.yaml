@@ -12,11 +12,11 @@ source:
 
   fn: {{ name }}-{{ version }}.windows.bin.zip                                             # [win32]
   url: http://ftp.stack.nl/pub/users/dimitri/{{ name }}-{{ version }}.windows.bin.zip      # [win32]
-  sha256: c88e2ff9b5a27a255e8d4c655cd63f5a6c3786e016ce7c88fc585cc58f2c8704                 # [win32]
+  sha256: c08900ffda8ed911746c86ad3354ad86084715cfd39ceca938f7bc2ead7988fc                 # [win32]
 
   fn: {{ name }}-{{ version }}.windows.x64.bin.zip                                         # [win64]
   url: http://ftp.stack.nl/pub/users/dimitri/{{ name }}-{{ version }}.windows.x64.bin.zip  # [win64]
-  sha256: 742f77a3a55ae438076958e7103e95864fd8ed62ee86ce203e092a6792618f9c                 # [win64]
+  sha256: e2d635a05fb0516311071cfcc41a3859fa22a912b484ed2c2ddec70248b75845                 # [win64]
 
   patches:                                                                       # [not win]
     # CMake finds iconv_open in glibc, but finds iconv.h from libiconv.
