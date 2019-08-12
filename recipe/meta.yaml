@@ -1,22 +1,18 @@
 {% set name = "doxygen" %}
-{% set version = "1.8.14" %}
+{% set version = "1.8.16" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.src.tar.gz                                                  # [not win]
-  url: ftp://ftp.stack.nl/pub/users/dimitri/{{ name }}-{{ version }}.src.tar.gz            # [not win]
-  sha256: d1757e02755ef6f56fd45f1f4398598b920381948d6fcfa58f5ca6aa56f59d4d                 # [not win]
+  fn: {{ name }}-{{ version }}.src.tar.gz                                    # [not win]
+  url: http://doxygen.nl/files/{{ name }}-{{ version }}.src.tar.gz           # [not win]
+  sha256: cc8f6cf3320bff0aada8268ccefe25de3118c47ff1212d83a457254bad8daa5d   # [not win]
 
-  fn: {{ name }}-{{ version }}.windows.bin.zip                                             # [win32]
-  url: http://ftp.stack.nl/pub/users/dimitri/{{ name }}-{{ version }}.windows.bin.zip      # [win32]
-  sha256: c88e2ff9b5a27a255e8d4c655cd63f5a6c3786e016ce7c88fc585cc58f2c8704                 # [win32]
-
-  fn: {{ name }}-{{ version }}.windows.x64.bin.zip                                         # [win64]
-  url: http://ftp.stack.nl/pub/users/dimitri/{{ name }}-{{ version }}.windows.x64.bin.zip  # [win64]
-  sha256: 742f77a3a55ae438076958e7103e95864fd8ed62ee86ce203e092a6792618f9c                 # [win64]
+  fn: {{ name }}-{{ version }}.windows.x64.bin.zip                           # [win]
+  url: http://doxygen.nl/files/{{ name }}-{{ version }}.windows.x64.bin.zip  # [win]
+  sha256: c84890ec003841c1ee6ff35dd3b17fdfd5ae4c2914d1c8df11dcc3719d294ac5   # [win]
 
   patches:                                                                       # [not win]
     # CMake finds iconv_open in glibc, but finds iconv.h from libiconv.
@@ -25,7 +21,6 @@ source:
 
 build:
   number: 0
-  skip: True  # [not py35 and unix]
   script:                                                  # [win]
       - mkdir %SCRIPTS%                                    # [win]
       - copy doxygen.exe %SCRIPTS%\ || goto :eof           # [win]
@@ -37,15 +32,17 @@ build:
 
 requirements:       # [not win]
   build:            # [not win]
-    - cmake         # [not win]
-    - toolchain     # [not win]
-    - flex          # [not win]
+    - {{ compiler('c') }}  # [not win]
+    - {{ compiler('cxx') }}  # [not win]
     - bison         # [not win]
-    - python        # [not win]
-    - libiconv      # [not win]
-    - texlive-core  # [not win]
-  run:              # [not win]
+    - cmake         # [not win]
+    - flex          # [not win]
     - m4            # [not win]
+    - python        # [not win]
+    - texlive-core  # [not win]
+  host:             # [not win]
+    - libiconv      # [not win]
+  run:              # [not win]
     - libiconv      # [not win]
 
 test:
@@ -59,11 +56,11 @@ about:
   summary: 'Generate documentation from source code'
 
   description: |
-    Doxygen is the de facto standard tool for 
-    generating documentation from annotated C++ sources, 
-    but it also supports other popular programming 
-    languages such as C, Objective-C, C#, PHP, Java, 
-    Python, IDL (Corba, Microsoft, and UNO/OpenOffice flavors), 
+    Doxygen is the de facto standard tool for
+    generating documentation from annotated C++ sources,
+    but it also supports other popular programming
+    languages such as C, Objective-C, C#, PHP, Java,
+    Python, IDL (Corba, Microsoft, and UNO/OpenOffice flavors),
     Fortran, VHDL, Tcl, and to some extent D.
   doc_url: http://www.stack.nl/~dimitri/doxygen/manual/index.html
   dev_url: https://github.com/doxygen/doxygen
