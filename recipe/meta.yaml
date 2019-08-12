@@ -1,22 +1,18 @@
 {% set name = "doxygen" %}
-{% set version = "1.8.14" %}
+{% set version = "1.8.16" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.src.tar.gz                                                  # [not win]
-  url: http://doxygen.nl/files/{{ name }}-{{ version }}.src.tar.gz            # [not win]
-  sha256: d1757e02755ef6f56fd45f1f4398598b920381948d6fcfa58f5ca6aa56f59d4d                 # [not win]
+  fn: {{ name }}-{{ version }}.src.tar.gz                                    # [not win]
+  url: http://doxygen.nl/files/{{ name }}-{{ version }}.src.tar.gz           # [not win]
+  sha256: cc8f6cf3320bff0aada8268ccefe25de3118c47ff1212d83a457254bad8daa5d   # [not win]
 
-  fn: {{ name }}-{{ version }}.windows.bin.zip                                             # [win32]
-  url: http://doxygen.nl/files/{{ name }}-{{ version }}.windows.bin.zip      # [win32]
-  sha256: c08900ffda8ed911746c86ad3354ad86084715cfd39ceca938f7bc2ead7988fc                 # [win32]
-
-  fn: {{ name }}-{{ version }}.windows.x64.bin.zip                                         # [win64]
-  url: http://doxygen.nl/files/{{ name }}-{{ version }}.windows.x64.bin.zip  # [win64]
-  sha256: e2d635a05fb0516311071cfcc41a3859fa22a912b484ed2c2ddec70248b75845                 # [win64]
+  fn: {{ name }}-{{ version }}.windows.x64.bin.zip                           # [win]
+  url: http://doxygen.nl/files/{{ name }}-{{ version }}.windows.x64.bin.zip  # [win]
+  sha256: c84890ec003841c1ee6ff35dd3b17fdfd5ae4c2914d1c8df11dcc3719d294ac5   # [win]
 
   patches:                                                                       # [not win]
     # CMake finds iconv_open in glibc, but finds iconv.h from libiconv.
