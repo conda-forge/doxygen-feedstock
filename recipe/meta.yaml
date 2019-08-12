@@ -33,6 +33,7 @@ build:
 requirements:       # [not win]
   build:            # [not win]
     - {{ compiler('c') }}  # [not win]
+    - {{ compiler('cxx') }}  # [not win]
     - bison         # [not win]
     - cmake         # [not win]
     - flex          # [not win]
