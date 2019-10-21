@@ -22,13 +22,6 @@ Current build status
 
 
 <table><tr>
-    <td>Travis</td>
-    <td>
-      <a href="https://travis-ci.org/conda-forge/doxygen-feedstock">
-        <img alt="macOS" src="https://img.shields.io/travis/conda-forge/doxygen-feedstock/master.svg?label=macOS">
-      </a>
-    </td>
-  </tr><tr>
     <td>Drone</td>
     <td>
       <a href="https://cloud.drone.io/conda-forge/doxygen-feedstock">
