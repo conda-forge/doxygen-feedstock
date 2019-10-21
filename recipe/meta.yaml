@@ -20,7 +20,7 @@ source:
     - find_iconv.patch                                                           # [not win]
 
 build:
-  number: 0
+  number: 1
   script:                                                  # [win]
       - mkdir %SCRIPTS%                                    # [win]
       - copy doxygen.exe %SCRIPTS%\ || goto :eof           # [win]
@@ -36,6 +36,7 @@ requirements:       # [not win]
     - {{ compiler('cxx') }}  # [not win]
     - bison         # [not win]
     - cmake         # [not win]
+    - make          # [not win]
     - flex          # [not win]
     - m4            # [not win]
     - python        # [not win]
