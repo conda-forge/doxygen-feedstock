@@ -1,37 +1,37 @@
 {% set name = "doxygen" %}
-{% set version = "1.8.16" %}
+{% set version = "1.8.17" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.src.tar.gz                                    # [not win]
-  url: http://doxygen.nl/files/{{ name }}-{{ version }}.src.tar.gz           # [not win]
-  sha256: cc8f6cf3320bff0aada8268ccefe25de3118c47ff1212d83a457254bad8daa5d   # [not win]
+  fn: {{ name }}-{{ version }}.src.tar.gz  # [not win]
+  url: http://doxygen.nl/files/{{ name }}-{{ version }}.src.tar.gz  # [not win]
+  sha256: 75717be0e938821656e2d498a5f73e53fe31fce924effcf0e8c169a98cba87d7  # [not win]
 
-  fn: {{ name }}-{{ version }}.windows.x64.bin.zip                           # [win]
+  fn: {{ name }}-{{ version }}.windows.x64.bin.zip  # [win]
   url: http://doxygen.nl/files/{{ name }}-{{ version }}.windows.x64.bin.zip  # [win]
-  sha256: c84890ec003841c1ee6ff35dd3b17fdfd5ae4c2914d1c8df11dcc3719d294ac5   # [win]
+  sha256: 49051ae149715b765d94d51eb8c4c6043636464cb27ba5f75c14f71ab81d8740  # [win]
 
-  patches:                                                                       # [not win]
+  patches:   # [not win]
     # CMake finds iconv_open in glibc, but finds iconv.h from libiconv.
     # Make sure both are found from one place.
     - find_iconv.patch                                                           # [not win]
 
 build:
-  number: 1
-  script:                                                  # [win]
-      - mkdir %SCRIPTS%                                    # [win]
-      - copy doxygen.exe %SCRIPTS%\ || goto :eof           # [win]
-      - copy doxyindexer.exe %SCRIPTS%\ || goto :eof       # [win]
-      - copy doxysearch.cgi.exe %SCRIPTS%\ || goto :eof    # [win]
-      - copy libclang.dll %LIBRARY_BIN%\ || goto :eof      # [win]
-      - copy libclang.dll %LIBRARY_BIN%\ || goto :eof      # [win]
-      - copy %RECIPE_DIR%\LICENSE %SRC_DIR%\ || goto :eof  # [win]
+  number: 0
+  script:   # [win]
+    - mkdir %SCRIPTS%                                      # [win]
+    - copy doxygen.exe %SCRIPTS%\ || goto :eof             # [win]
+    - copy doxyindexer.exe %SCRIPTS%\ || goto :eof         # [win]
+    - copy doxysearch.cgi.exe %SCRIPTS%\ || goto :eof      # [win]
+    - copy libclang.dll %LIBRARY_BIN%\ || goto :eof        # [win]
+    - copy libclang.dll %LIBRARY_BIN%\ || goto :eof        # [win]
+    - copy %RECIPE_DIR%\LICENSE %SRC_DIR%\ || goto :eof    # [win]
 
-requirements:       # [not win]
-  build:            # [not win]
+requirements:   # [not win]
+  build:   # [not win]
     - {{ compiler('c') }}  # [not win]
     - {{ compiler('cxx') }}  # [not win]
     - bison         # [not win]
@@ -41,9 +41,9 @@ requirements:       # [not win]
     - m4            # [not win]
     - python        # [not win]
     - texlive-core  # [not win]
-  host:             # [not win]
+  host:   # [not win]
     - libiconv      # [not win]
-  run:              # [not win]
+  run:   # [not win]
     - libiconv      # [not win]
 
 test:
@@ -54,7 +54,7 @@ about:
   home: http://www.stack.nl/~dimitri/doxygen/index.html
   license: GPL2
   license_file: LICENSE
-  summary: 'Generate documentation from source code'
+  summary: Generate documentation from source code
 
   description: |
     Doxygen is the de facto standard tool for
