@@ -5,9 +5,13 @@ Home: http://www.stack.nl/~dimitri/doxygen/index.html
 
 Package license: GPL2
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/doxygen-feedstock/blob/master/LICENSE.txt)
 
 Summary: Generate documentation from source code
+
+Development: https://github.com/doxygen/doxygen
+
+Documentation: http://www.stack.nl/~dimitri/doxygen/manual/index.html
 
 Doxygen is the de facto standard tool for
 generating documentation from annotated C++ sources,
@@ -67,6 +71,13 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4903&branchName=master">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/doxygen-feedstock?branchName=master&jobName=osx&configuration=osx_64_" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4903&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/doxygen-feedstock?branchName=master&jobName=osx&configuration=osx_arm64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
