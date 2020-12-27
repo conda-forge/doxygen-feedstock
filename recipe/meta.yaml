@@ -1,5 +1,5 @@
 {% set name = "doxygen" %}
-{% set version = "1.8.20" %}
+{% set version = "1.9.0" %}
 
 package:
   name: {{ name|lower }}
@@ -8,11 +8,11 @@ package:
 source:
   fn: {{ name }}-{{ version }}.src.tar.gz  # [not win]
   url: http://doxygen.nl/files/{{ name }}-{{ version }}.src.tar.gz  # [not win]
-  sha256: 5a018e57d26d7eeac415e676fe7817ae8be9828ed338d9701a2b26c7630389ce  # [not win]
+  sha256: 11a447710e99db8604903fd64ac742a3677250e89ced9821a320f9e285e35500  # [not win]
 
   fn: {{ name }}-{{ version }}.windows.x64.bin.zip  # [win]
   url: http://doxygen.nl/files/{{ name }}-{{ version }}.windows.x64.bin.zip  # [win]
-  sha256: 4b6000bc611caa26140194295dd671e05c66069aceb2e9261793f7fb87a3a11a  # [win]
+  sha256: 6de08e0baf8f301fce7498acdf36b610535d0e90934f0cd3b77c3ffb6da8b543  # [win]
 
   patches:   # [not win]
     # CMake finds iconv_open in glibc, but finds iconv.h from libiconv.
