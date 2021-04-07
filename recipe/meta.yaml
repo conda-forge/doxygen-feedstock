@@ -6,45 +6,36 @@ package:
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.src.tar.gz  # [not win]
-  url: http://doxygen.nl/files/{{ name }}-{{ version }}.src.tar.gz  # [not win]
-  sha256: da8a393b7f8b7442653475a0a4bc6eaa9ce60623440d14a82fef4e8d99da4b85  # [not win]
+  fn: {{ name }}-{{ version }}.src.tar.gz
+  url: http://doxygen.nl/files/{{ name }}-{{ version }}.src.tar.gz
+  sha256: da8a393b7f8b7442653475a0a4bc6eaa9ce60623440d14a82fef4e8d99da4b85
 
-  fn: {{ name }}-{{ version }}.windows.x64.bin.zip  # [win]
-  url: http://doxygen.nl/files/{{ name }}-{{ version }}.windows.x64.bin.zip  # [win]
-  sha256: deb8e6e5f21c965ec07fd32589d0332eff047f2c8658b5c56be4839a5dd43353  # [win]
-
-  patches:   # [not win]
+  patches:
     # CMake finds iconv_open in glibc, but finds iconv.h from libiconv.
     # Make sure both are found from one place.
-    - find_iconv.patch                                                           # [not win]
+    - find_iconv.patch
 
 build:
-  number: 0
-  script:   # [win]
-    - mkdir %SCRIPTS%                                      # [win]
-    - copy doxygen.exe %SCRIPTS%\ || goto :eof             # [win]
-    - copy doxyindexer.exe %SCRIPTS%\ || goto :eof         # [win]
-    - copy doxysearch.cgi.exe %SCRIPTS%\ || goto :eof      # [win]
-    - copy libclang.dll %LIBRARY_BIN%\ || goto :eof        # [win]
-    - copy libclang.dll %LIBRARY_BIN%\ || goto :eof        # [win]
-    - copy %RECIPE_DIR%\LICENSE %SRC_DIR%\ || goto :eof    # [win]
+  number: 1
 
-requirements:   # [not win]
-  build:   # [not win]
-    - {{ compiler('c') }}  # [not win]
-    - {{ compiler('cxx') }}  # [not win]
-    - bison         # [not win]
-    - cmake         # [not win]
-    - make          # [not win]
-    - flex          # [not win]
-    - m4            # [not win]
-    - python        # [not win]
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - bison  # [not win]
+    - cmake
+    - flex  # [not win]
+    - m4  # [not win]
+    - make  # [not win]
+    - miktex  # [win]
+    - ninja  # [win]
+    - python
     - texlive-core  # [not win]
-  host:   # [not win]
-    - libiconv      # [not win]
-  run:   # [not win]
-    - libiconv      # [not win]
+    - winflexbison  # [win]
+  host:
+    - libiconv
+  run:
+    - libiconv
 
 test:
   commands:
