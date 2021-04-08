@@ -1,3 +1,5 @@
+@echo on
+
 mkdir build
 cd build
 
@@ -13,8 +15,14 @@ cmake -G "Ninja" ^
 :: build
 cmake --build . --config Release -j %CPU_COUNT% || goto :eof
 
-:: test
-ctest -C Release || goto :eof
+:: test - xmllint, diff and perl are required
+where xmllint || goto :eof
+where diff || goto :eof
+perl --version || goto :eof
+ctest --output-on-failure -C Release || goto :eof
 
 :: install
 cmake --build . --config Release --target install || goto :eof
+
+:: move binaries from "bin" to the more standard "Scripts" directory in env
+move "%PREFIX%\bin\doxy*.exe" "%PREFIX%\Scripts"

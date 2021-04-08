@@ -25,13 +25,18 @@ requirements:
     - bison  # [not win]
     - cmake
     - flex  # [not win]
+    - libxml2  # [win]  # xmllint.exe used for testing inside building step
     - m4  # [not win]
     - make  # [not win]
-    - miktex  # [win]
+    - miktex  # [win]  # used for testing inside building step
     - ninja  # [win]
     - python
     - texlive-core  # [not win]
     - winflexbison  # [win]
+    - m2-diffutils  # [win]  # diff.exe used for testing inside building step
+    - m2-libiconv  # [win]  # undeclared dependency of m2-diffutils
+    - m2-libintl  # [win]  # undeclared dependency of m2-diffutils
+    - perl  # [win]  # perl.exe is used for testing inside building step
   host:
     - libiconv
   run:
