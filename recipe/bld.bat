@@ -8,7 +8,7 @@ set BISON_PKGDATADIR=%BUILD_PREFIX%\Library\share\winflexbison\data
 
 :: cmake
 cmake -G "Ninja" ^
-    -DCMAKE_INSTALL_PREFIX:PATH="%PREFIX%" ^
+    -DCMAKE_INSTALL_PREFIX:PATH="%LIBRARY_PREFIX%" ^
     -DCMAKE_BUILD_TYPE:STRING=Release ^
     .. || goto :eof
 
@@ -23,6 +23,3 @@ ctest --output-on-failure -C Release || goto :eof
 
 :: install
 cmake --build . --config Release --target install || goto :eof
-
-:: move binaries from "bin" to the more standard "Scripts" directory in env
-move "%PREFIX%\bin\doxy*.exe" "%PREFIX%\Scripts"
