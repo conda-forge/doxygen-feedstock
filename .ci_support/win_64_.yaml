@@ -8,8 +8,16 @@ cxx_compiler:
 - vs2017
 libiconv:
 - '1.16'
+libxml2:
+- '2.9'
+perl:
+- 5.26.2
 pin_run_as_build:
   libiconv:
     max_pin: x.x
+  libxml2:
+    max_pin: x.x
+  perl:
+    max_pin: x.x.x
 target_platform:
 - win-64
