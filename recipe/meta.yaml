@@ -47,8 +47,8 @@ test:
     - doxygen --help
 
 about:
-  home: http://www.stack.nl/~dimitri/doxygen/index.html
-  license: GPL2
+  home: https://www.doxygen.nl/index.html
+  license: GPL-2.0-only
   license_file: LICENSE
   summary: Generate documentation from source code
 
@@ -59,7 +59,7 @@ about:
     languages such as C, Objective-C, C#, PHP, Java,
     Python, IDL (Corba, Microsoft, and UNO/OpenOffice flavors),
     Fortran, VHDL, Tcl, and to some extent D.
-  doc_url: http://www.stack.nl/~dimitri/doxygen/manual/index.html
+  doc_url: https://www.doxygen.nl/manual/index.html
   dev_url: https://github.com/doxygen/doxygen
 
 extra:
