@@ -16,7 +16,7 @@ source:
     - find_iconv.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
