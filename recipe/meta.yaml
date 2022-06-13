@@ -7,8 +7,8 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.src.tar.gz
-  url: http://doxygen.nl/files/{{ name }}-{{ version }}.src.tar.gz
-  sha256: 6d75c3dfe472f820943a5870610201952b983c34f055fb8dfc4ebd158fddc900
+  url: https://www.doxygen.nl/files/{{ name }}-{{ version }}.src.tar.gz
+  sha256: a15e9cd8c0d02b7888bc8356eac200222ecff1defd32f3fe05257d81227b1f37
 
   patches:
     # CMake finds iconv_open in glibc, but finds iconv.h from libiconv.
@@ -16,7 +16,7 @@ source:
     - find_iconv.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
