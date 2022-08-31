@@ -8,6 +8,7 @@ set BISON_PKGDATADIR=%BUILD_PREFIX%\Library\share\winflexbison\data
 
 :: cmake
 cmake -G "Ninja" ^
+    -DCMAKE_PREFIX_PATH:PATH="%LIBRARY_PREFIX%" ^
     -DCMAKE_INSTALL_PREFIX:PATH="%LIBRARY_PREFIX%" ^
     -DCMAKE_BUILD_TYPE:STRING=Release ^
     .. || goto :eof
