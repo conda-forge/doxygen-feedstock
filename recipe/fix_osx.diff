@@ -1,0 +1,18 @@
+Use conda-forge default for MACOSX_DEPLOYMENT_TARGET
+
+Authored-by: Isuru Fernando<isuruf@gmail.com>
+
+--- CMakeLists.txt      2022-08-31 05:24:51.950579963 -0500
++++ CMakeLists.txt      2022-08-31 05:25:13.486880181 -0500
+@@ -67,9 +67,8 @@
+ set(CMAKE_CXX_EXTENSIONS ON)
+ 
+ if (CMAKE_SYSTEM MATCHES "Darwin")
+-    set(CMAKE_OSX_DEPLOYMENT_TARGET "${MACOS_VERSION_MIN}" CACHE STRING "Minimum OS X deployment version" FORCE)
+-    set(CMAKE_CXX_FLAGS "-Wno-deprecated-register -mmacosx-version-min=${MACOS_VERSION_MIN} ${CMAKE_CXX_FLAGS}")
+-    set(CMAKE_C_FLAGS "-Wno-deprecated-register -mmacosx-version-min=${MACOS_VERSION_MIN} ${CMAKE_C_FLAGS}")
++    set(CMAKE_CXX_FLAGS "-Wno-deprecated-register ${CMAKE_CXX_FLAGS}")
++    set(CMAKE_C_FLAGS "-Wno-deprecated-register ${CMAKE_C_FLAGS}")
+     find_library(CORESERVICES_LIB CoreServices)
+     set(EXTRA_LIBS ${CORESERVICES_LIB})
+ endif()

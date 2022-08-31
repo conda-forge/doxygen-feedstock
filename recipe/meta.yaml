@@ -14,6 +14,7 @@ source:
     # CMake finds iconv_open in glibc, but finds iconv.h from libiconv.
     # Make sure both are found from one place.
     - find_iconv.patch
+    - fix_osx.diff
 
 build:
   number: 0
