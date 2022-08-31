@@ -1,14 +1,13 @@
 {% set name = "doxygen" %}
-{% set version = "1.9.3" %}
+{% set version = "1.9.4" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.src.tar.gz
-  url: https://www.doxygen.nl/files/{{ name }}-{{ version }}.src.tar.gz
-  sha256: f352dbc3221af7012b7b00935f2dfdc9fb67a97d43287d2f6c81c50449d254e0
+  url: https://gudhi.inria.fr/doxygen-1.9.4-patch-osx.tar.gz
+  sha256: 28b15096e7266ce31f1a9b1dc4eba05f809eeb96b9b6a349967c450bbf30267d
 
   patches:
     # CMake finds iconv_open in glibc, but finds iconv.h from libiconv.
@@ -16,7 +15,7 @@ source:
     - find_iconv.patch
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:
