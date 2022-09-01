@@ -220,6 +220,3 @@ Feedstock Maintainers
 * [@isuruf](https://github.com/isuruf/)
 * [@tadeu](https://github.com/tadeu/)
 
-
-<!-- dummy commit to enable rerendering -->
-
