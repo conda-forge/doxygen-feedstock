@@ -7,7 +7,7 @@ channel_targets:
 cxx_compiler:
 - vs2019
 libiconv:
-- '1.16'
+- '1.17'
 libxml2:
 - '2.9'
 perl:
