@@ -6,9 +6,8 @@ package:
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.src.tar.gz
-  url: https://www.doxygen.nl/files/{{ name }}-{{ version }}.src.tar.gz
-  sha256: 297f8ba484265ed3ebd3ff3fe7734eb349a77e4f95c8be52ed9977f51dea49df
+  url: https://github.com/{{ name }}/{{ name }}/archive/Release_{{ version | replace(".", "_") }}.tar.gz
+  sha256: 2a3ee47f7276b759f74bac7614c05a1296a5b028d3f6a79a88e4c213db78e7dc
 
   patches:
     # CMake finds iconv_open in glibc, but finds iconv.h from libiconv.
