@@ -29,7 +29,7 @@ requirements:
     - libxml2  # [win]  # xmllint.exe used for testing inside building step
     - m4  # [not win]
     - make  # [not win]
-    - miktex  # [win]  # used for testing inside building step
+    # - miktex  # [win]  # used for testing inside building step
     - ninja  # [win]
     - python
     - texlive-core  # [not win]
