@@ -16,11 +16,12 @@ cmake -G "Ninja" ^
 :: build
 cmake --build . --config Release -j %CPU_COUNT% || goto :eof
 
+:: install
+cmake --build . --config Release --target install || goto :eof
+
 :: test - xmllint, diff and perl are required
 where xmllint || goto :eof
 where diff || goto :eof
 perl --version || goto :eof
-ctest --output-on-failure -C Release || goto :eof
-
-:: install
-cmake --build . --config Release --target install || goto :eof
+where pdflatex.exe
+if %errorlevel% equ 0 ctest --output-on-failure -C Release

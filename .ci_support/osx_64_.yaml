@@ -13,12 +13,9 @@ cxx_compiler:
 cxx_compiler_version:
 - '14'
 libiconv:
-- '1.16'
+- '1'
 macos_machine:
 - x86_64-apple-darwin13.4.0
-pin_run_as_build:
-  libiconv:
-    max_pin: x.x
 target_platform:
 - osx-64
 zip_keys:

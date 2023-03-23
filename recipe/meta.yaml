@@ -1,14 +1,13 @@
 {% set name = "doxygen" %}
-{% set version = "1.9.5" %}
+{% set version = "1.9.6" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.src.tar.gz
-  url: https://www.doxygen.nl/files/{{ name }}-{{ version }}.src.tar.gz
-  sha256: 55b454b35d998229a96f3d5485d57a0a517ce2b78d025efb79d57b5a2e4b2eec
+  url: https://github.com/{{ name }}/{{ name }}/archive/Release_{{ version | replace(".", "_") }}.tar.gz
+  sha256: 2a3ee47f7276b759f74bac7614c05a1296a5b028d3f6a79a88e4c213db78e7dc
 
   patches:
     # CMake finds iconv_open in glibc, but finds iconv.h from libiconv.
@@ -29,7 +28,7 @@ requirements:
     - libxml2  # [win]  # xmllint.exe used for testing inside building step
     - m4  # [not win]
     - make  # [not win]
-    - miktex  # [win]  # used for testing inside building step
+    # - miktex  # [win]  # used for testing inside building step
     - ninja  # [win]
     - python
     - texlive-core  # [not win]
@@ -68,3 +67,4 @@ extra:
     - bluescarni
     - isuruf
     - tadeu
+    - tdegeus
