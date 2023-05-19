@@ -14,6 +14,8 @@ source:
     # Make sure both are found from one place.
     - find_iconv.patch
     - fix_osx.diff
+    # https://github.com/doxygen/doxygen/issues/10055
+    - macos.patch  # [osx]
 
 build:
   number: 0

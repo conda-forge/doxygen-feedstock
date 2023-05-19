@@ -1,0 +1,15 @@
+diff --git a/deps/filesystem/filesystem.hpp b/deps/filesystem/filesystem.hpp
+index 53f4ad4ef..32bb553df 100644
+--- a/deps/filesystem/filesystem.hpp
++++ b/deps/filesystem/filesystem.hpp
+@@ -4650,9 +4650,7 @@ GHC_INLINE void last_write_time(const path& p, file_time_type new_time, std::err
+     if (!::SetFileTime(file.get(), 0, 0, &ft)) {
+         ec = detail::make_system_error();
+     }
+-#elif defined(GHC_OS_MACOS) && \
+-    (__MAC_OS_X_VERSION_MIN_REQUIRED < __MAC_10_13) || (__IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_11_0) || \
+-    (__TV_OS_VERSION_MIN_REQUIRED < __TVOS_11_0) || (__WATCH_OS_VERSION_MIN_REQUIRED < __WATCHOS_4_0)
++#elif defined(GHC_OS_MACOS)
+     struct ::stat fs;
+     if (::stat(p.c_str(), &fs) == 0) {
+         struct ::timeval tv[2];
