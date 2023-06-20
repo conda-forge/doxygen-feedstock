@@ -16,9 +16,11 @@ source:
     - fix_osx.diff
     # https://github.com/doxygen/doxygen/issues/10055
     - macos.patch  # [osx]
+    # https://github.com/doxygen/doxygen/pull/10112.patch
+    - 10112.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
