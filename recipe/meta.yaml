@@ -16,9 +16,6 @@ source:
     - fix_osx.diff
     # https://github.com/doxygen/doxygen/issues/10055
     - macos.patch  # [osx]
-    # https://github.com/doxygen/doxygen/pull/10112.patch
-    # fixed upstream: needs to be removed upon release of 1.9.8
-    - 10112.patch
 
 build:
   number: 0
