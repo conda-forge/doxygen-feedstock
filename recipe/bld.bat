@@ -6,6 +6,43 @@ cd build
 :: workaround for winflexbison problem, see https://github.com/conda-forge/winflexbison-feedstock/issues/6
 set BISON_PKGDATADIR=%BUILD_PREFIX%\Library\share\winflexbison\data
 
+:: debug
+echo "=== perl ===";
+perl --version;
+echo "=== python ===";
+python --version;
+echo "=== cmake ===";
+cmake --version;
+echo "=== latex ===";
+Try {
+    latex --version;
+}
+Catch {
+    echo "latex not found";
+}
+echo "=== bibtex ===";
+Try {
+    bibtex --version;
+}
+Catch {
+    echo "bibtex not found";
+}
+echo "=== dvips ===";
+Try {
+    dvips --version;
+}
+Catch {
+    echo "dvips not found";
+}
+echo "=== bison ===";
+win_bison --version;
+echo "=== flex ===";
+win_flex --version;
+echo "=== dot ===";
+dot -V;
+echo "=== ghostscript ===";
+gswin64c --version;
+
 :: cmake
 cmake -G "Ninja" ^
     -DCMAKE_PREFIX_PATH:PATH="%LIBRARY_PREFIX%" ^
@@ -14,7 +51,7 @@ cmake -G "Ninja" ^
     .. || goto :eof
 
 :: build
-cmake --build . --config Release -j %CPU_COUNT% || goto :eof
+cmake --build . --config Release || goto :eof
 
 :: install
 cmake --build . --config Release --target install || goto :eof
