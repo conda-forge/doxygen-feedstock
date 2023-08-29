@@ -42,13 +42,13 @@ cmake -G "Ninja" ^
     -DCMAKE_PREFIX_PATH:PATH="%LIBRARY_PREFIX%" ^
     -DCMAKE_INSTALL_PREFIX:PATH="%LIBRARY_PREFIX%" ^
     -DCMAKE_BUILD_TYPE:STRING=Release ^
-    .. || goto :error
+    .. || exit /b 1
 
 :: build
-cmake --build . --config Release || goto :error
+cmake --build . --config Release || exit /b 1
 
 :: install
-cmake --build . --config Release --target install || goto :error
+cmake --build . --config Release --target install || exit /b 1
 
 :: test - xmllint, diff and perl are required
 where xmllint || goto :eof
@@ -56,6 +56,3 @@ where diff || goto :eof
 perl --version || goto :eof
 where pdflatex.exe
 if %errorlevel% equ 0 ctest --output-on-failure -C Release
-
-:error
-exit /b 1
