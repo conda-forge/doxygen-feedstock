@@ -45,10 +45,10 @@ cmake -G "Ninja" ^
     .. || exit /b 1
 
 :: build
-cmake --build . --config Release --verbose || exit /b 1
+cmake --build . --config Release --verbose -j 1 || exit /b 1
 
 :: install
-cmake --build . --config Release --verbose --target install || exit /b 1
+cmake --build . --config Release --verbose -j 1 --target install || exit /b 1
 
 :: test - xmllint, diff and perl are required
 where xmllint || goto :eof
