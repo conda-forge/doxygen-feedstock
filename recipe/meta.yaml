@@ -1,5 +1,5 @@
 {% set name = "doxygen" %}
-{% set version = "1.9.7" %}
+{% set version = "1.9.8" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/Release_{{ version | replace(".", "_") }}.tar.gz
-  sha256: 691777992a7240ed1f822a5c2ff2c4273b57c1cf9fc143553d87f91a0c5970ee
+  sha256: 77371e8a58d22d5e03c52729844d1043e9cbf8d0005ec5112ffa4c8f509ddde8
 
   patches:
     # CMake finds iconv_open in glibc, but finds iconv.h from libiconv.
@@ -16,12 +16,9 @@ source:
     - fix_osx.diff
     # https://github.com/doxygen/doxygen/issues/10055
     - macos.patch  # [osx]
-    # https://github.com/doxygen/doxygen/pull/10112.patch
-    # fixed upstream: needs to be removed upon release of 1.9.8
-    - 10112.patch
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:
