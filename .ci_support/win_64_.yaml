@@ -9,7 +9,7 @@ cxx_compiler:
 libiconv:
 - '1'
 libxml2:
-- '2.10'
+- '2.11'
 perl:
 - 5.32.1
 target_platform:
