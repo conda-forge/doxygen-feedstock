@@ -46,7 +46,10 @@ requirements:
 
 test:
   commands:
-    - doxygen --help
+    - doxygen --version | grep {{ version }}  # [not win]
+    - doxyapp --version | grep {{ version }}  # [not win]
+    - doxygen --version  # [win]
+    - doxyapp --version  # [win]
 
 about:
   home: https://www.doxygen.nl/index.html
