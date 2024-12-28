@@ -1,5 +1,5 @@
 {% set name = "doxygen" %}
-{% set version = "1.11.0" %}
+{% set version = "1.13.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/Release_{{ version | replace(".", "_") }}.tar.gz
-  sha256: 1fea49c69e51fec3dd2599947f6d48d9b1268bd5115b1bb08dffefc1fd5d19ee
+  sha256: f447f6d3dce91e70d323611fc5e1b15dfff705093eddbe8f36f2d9b10d99743d
 
   patches:
     # CMake finds iconv_open in glibc, but finds iconv.h from libiconv.
