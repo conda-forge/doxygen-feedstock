@@ -10,9 +10,6 @@ source:
   sha256: 5ca35e1258020df5fe8b21c3656aed156c317def4a81b7fe52f452edc9f35768
 
   patches:
-    # CMake finds iconv_open in glibc, but finds iconv.h from libiconv.
-    # Make sure both are found from one place.
-    - find_iconv.patch
     - fix_osx.diff
     # https://github.com/doxygen/doxygen/issues/10055
     - macos.patch  # [osx]
