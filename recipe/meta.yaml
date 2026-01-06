@@ -1,5 +1,5 @@
 {% set name = "doxygen" %}
-{% set version = "1.13.2" %}
+{% set version = "1_16_0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/Release_{{ version | replace(".", "_") }}.tar.gz
-  sha256: 4c9d9c8e95c2af4163ee92bcb0f3af03b2a4089402a353e4715771e8d3701c48
+  sha256: 329ece14a718852e22bf9e9cc5cf0b2df20b70a6853417e818e80a6ea78ea6ac
 
   patches:
     - fix_osx.diff
