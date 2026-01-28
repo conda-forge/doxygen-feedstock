@@ -1,5 +1,5 @@
 {% set name = "doxygen" %}
-{% set version = "1_16_1" %}
+{% set version = "1.16.1" %}
 
 package:
   name: {{ name|lower }}
