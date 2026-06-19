@@ -11,7 +11,7 @@ cxx_compiler:
 libiconv:
 - '1'
 libxml2:
-- '2.13'
+- '2.14'
 perl:
 - 5.32.1
 target_platform:
