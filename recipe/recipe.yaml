@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: doxygen
-  version: "1.16.1"
+  version: "1.17.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://github.com/${{ name }}/${{ name }}/archive/Release_${{ version | replace(".", "_") }}.tar.gz
-  sha256: cdf9d614ee8ed6a939ad12ab31a6aaa1b0c089dff2a4ce20aa008893b686d636
+  sha256: 28199ea88989fc56e302c927ef979596fe9247dd231e767ba6edcdbaa49f78aa
   patches:
     - fix_osx.diff
     # https://github.com/doxygen/doxygen/issues/10055

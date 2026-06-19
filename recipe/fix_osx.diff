@@ -4,7 +4,7 @@ Authored-by: Isuru Fernando<isuruf@gmail.com>
 
 --- CMakeLists.txt
 +++ CMakeLists.txt
-@@ -125,7 +125,6 @@
+@@ -125,5 +125,4 @@
  if(CMAKE_SYSTEM MATCHES "Darwin")
 -  set(CMAKE_OSX_DEPLOYMENT_TARGET "${MACOS_VERSION_MIN}" CACHE STRING "Minimum OS X deployment version")
    set(CMAKE_CXX_FLAGS "-Wno-deprecated-register ${CMAKE_CXX_FLAGS}")
