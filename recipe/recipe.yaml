@@ -25,33 +25,24 @@ requirements:
     - ${{ compiler('c') }}
     - ${{ stdlib("c") }}
     - ${{ compiler('cxx') }}
-    - if: not win
-      then: bison
     - cmake
-    - if: not win
-      then: flex
-    - if: win
-      then: libxml2
-    - if: not win
-      then: m4
-    - if: not win
-      then: make
-    # - miktex  # [win]  # used for testing inside building step
-    - if: win
-      then: ninja
     - python
-    - if: not win
-      then: texlive-core
     - if: win
-      then: winflexbison
-    - if: win
-      then: m2-diffutils
-    - if: win
-      then: m2-libiconv
-    - if: win
-      then: m2-libintl
-    - if: win
-      then: perl
+      then:
+        - libxml2  # xmllint.exe used for testing inside building step
+        # - miktex  # used for testing inside building step
+        - ninja
+        - winflexbison
+        - m2-diffutils  # diff.exe used for testing inside building step
+        - m2-libiconv  # undeclared dependency of m2-diffutils
+        - m2-libintl  # undeclared dependency of m2-diffutils
+        - perl  # perl.exe used for testing inside building step
+      else:
+        - bison
+        - flex
+        - m4
+        - make
+        - texlive-core
   host:
     - libiconv
   run:
@@ -59,14 +50,13 @@ requirements:
 
 tests:
   - script:
-      - if: not win
-        then: doxygen --version | grep ${{ version }}
-      - if: not win
-        then: doxyapp --version | grep ${{ version }}
       - if: win
-        then: doxygen --version
-      - if: win
-        then: doxyapp --version
+        then:
+          - doxygen --version
+          - doxyapp --version
+        else:
+          - doxygen --version | grep ${{ version }}
+          - doxyapp --version | grep ${{ version }}
 
 about:
   license: GPL-2.0-only
@@ -89,4 +79,3 @@ extra:
     - isuruf
     - tadeu
     - tdegeus
-
