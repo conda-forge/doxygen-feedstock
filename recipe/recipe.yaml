@@ -1,0 +1,92 @@
+schema_version: 1
+
+context:
+  name: doxygen
+  version: "1.16.1"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://github.com/${{ name }}/${{ name }}/archive/Release_${{ version | replace(".", "_") }}.tar.gz
+  sha256: cdf9d614ee8ed6a939ad12ab31a6aaa1b0c089dff2a4ce20aa008893b686d636
+  patches:
+    - fix_osx.diff
+    # https://github.com/doxygen/doxygen/issues/10055
+    - if: osx
+      then: macos.patch
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+    - ${{ compiler('cxx') }}
+    - if: not win
+      then: bison
+    - cmake
+    - if: not win
+      then: flex
+    - if: win
+      then: libxml2
+    - if: not win
+      then: m4
+    - if: not win
+      then: make
+    # - miktex  # [win]  # used for testing inside building step
+    - if: win
+      then: ninja
+    - python
+    - if: not win
+      then: texlive-core
+    - if: win
+      then: winflexbison
+    - if: win
+      then: m2-diffutils
+    - if: win
+      then: m2-libiconv
+    - if: win
+      then: m2-libintl
+    - if: win
+      then: perl
+  host:
+    - libiconv
+  run:
+    - libiconv
+
+tests:
+  - script:
+      - if: not win
+        then: doxygen --version | grep ${{ version }}
+      - if: not win
+        then: doxyapp --version | grep ${{ version }}
+      - if: win
+        then: doxygen --version
+      - if: win
+        then: doxyapp --version
+
+about:
+  license: GPL-2.0-only
+  license_file: LICENSE
+  summary: Generate documentation from source code
+  description: |
+    Doxygen is the de facto standard tool for
+    generating documentation from annotated C++ sources,
+    but it also supports other popular programming
+    languages such as C, Objective-C, C#, PHP, Java,
+    Python, IDL (Corba, Microsoft, and UNO/OpenOffice flavors),
+    Fortran, VHDL, Tcl, and to some extent D.
+  homepage: https://www.doxygen.nl/index.html
+  repository: https://github.com/doxygen/doxygen
+  documentation: https://www.doxygen.nl/manual/index.html
+
+extra:
+  recipe-maintainers:
+    - bluescarni
+    - isuruf
+    - tadeu
+    - tdegeus
+
