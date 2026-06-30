@@ -1,0 +1,22 @@
+Backport of upstream doxygen commit a819808ca4dd (issue #12116,
+"Test suite's test tagfile fails"), fixed-but-not-released as of 1.17.0.
+
+Test 120 normalises the tagfile header before comparing against the
+reference, but only matched the form with a doxygen_gitid attribute.
+When building from a release tarball there is no .git directory, so
+getGitVersion() is empty and doxygen omits doxygen_gitid, leaving the
+version unstripped and the test failing. Add the upstream regex that
+also normalises the no-gitid form. Drop this patch once it ships upstream.
+
+diff --git a/testing/runtests.py b/testing/runtests.py
+index 198aea7..02611ee 100755
+--- a/testing/runtests.py
++++ b/testing/runtests.py
+@@ -346,6 +346,7 @@ class Tester:
+                     data = xpopen('%s --format --noblanks --nowarning %s' % (self.args.xmllint,check_file))
+                     if data:
+                         # strip version
++                        data = re.sub(r'<tagfile doxygen_version="[^"]+">','<tagfile doxygen_version="" doxygen_gitid="">',data)
+                         data = re.sub(r'tagfile doxygen_version="[^"]+" doxygen_gitid="[^"]+"','tagfile doxygen_version="" doxygen_gitid=""',data)
+                         data = re.sub(r'xsd" version="[0-9.-]+"','xsd" version=""',data).rstrip('\n')
+                     else:

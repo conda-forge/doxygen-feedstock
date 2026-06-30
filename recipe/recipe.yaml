@@ -1,0 +1,86 @@
+schema_version: 1
+
+context:
+  name: doxygen
+  version: "1.17.0"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://github.com/${{ name }}/${{ name }}/archive/Release_${{ version | replace(".", "_") }}.tar.gz
+  sha256: 28199ea88989fc56e302c927ef979596fe9247dd231e767ba6edcdbaa49f78aa
+  patches:
+    - fix_osx.diff
+    # Backport of upstream a819808ca4dd (doxygen/doxygen#12116): the new
+    # 1.17.0 tagfile test only stripped the version when doxygen_gitid was
+    # present, which it isn't for tarball builds (no .git directory). Drop
+    # once it ships in a doxygen release.
+    - tagfile_test.patch
+    # https://github.com/doxygen/doxygen/issues/10055
+    - if: osx
+      then: macos.patch
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+    - ${{ compiler('cxx') }}
+    - cmake
+    - python
+    - if: win
+      then:
+        - libxml2  # xmllint.exe used for testing inside building step
+        # - miktex  # used for testing inside building step
+        - ninja
+        - winflexbison
+        - m2-diffutils  # diff.exe used for testing inside building step
+        - m2-libiconv  # undeclared dependency of m2-diffutils
+        - m2-libintl  # undeclared dependency of m2-diffutils
+        - perl  # perl.exe used for testing inside building step
+      else:
+        - bison
+        - flex
+        - m4
+        - make
+        - texlive-core
+  host:
+    - libiconv
+  run:
+    - libiconv
+
+tests:
+  - script:
+      - if: win
+        then:
+          - doxygen --version
+          - doxyapp --version
+        else:
+          - doxygen --version | grep ${{ version }}
+          - doxyapp --version | grep ${{ version }}
+
+about:
+  license: GPL-2.0-only
+  license_file: LICENSE
+  summary: Generate documentation from source code
+  description: |
+    Doxygen is the de facto standard tool for
+    generating documentation from annotated C++ sources,
+    but it also supports other popular programming
+    languages such as C, Objective-C, C#, PHP, Java,
+    Python, IDL (Corba, Microsoft, and UNO/OpenOffice flavors),
+    Fortran, VHDL, Tcl, and to some extent D.
+  homepage: https://www.doxygen.nl/index.html
+  repository: https://github.com/doxygen/doxygen
+  documentation: https://www.doxygen.nl/manual/index.html
+
+extra:
+  recipe-maintainers:
+    - bluescarni
+    - isuruf
+    - tadeu
+    - tdegeus
