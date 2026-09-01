@@ -51,9 +51,15 @@ cmake --build . --config Release --verbose -j 1 || exit /b 1
 :: install
 cmake --build . --config Release --verbose -j 1 --target install || exit /b 1
 
-:: test - xmllint, diff and perl are required
-where xmllint || goto :eof
-where diff || goto :eof
-perl --version || goto :eof
-where pdflatex.exe
-if %errorlevel% equ 0 ctest --output-on-failure -C Release
+:: test - xmllint, diff, perl and pdflatex are required; skip the suite if any
+:: is missing. Every probe below has to land on :no_tests rather than fall out
+:: of the script, because rattler-build propagates the trailing errorlevel: a
+:: failed `where` would otherwise be reported as a failed build.
+where xmllint || goto :no_tests
+where diff || goto :no_tests
+perl --version || goto :no_tests
+where pdflatex.exe || goto :no_tests
+ctest --output-on-failure -C Release || exit /b 1
+
+:no_tests
+exit /b 0
