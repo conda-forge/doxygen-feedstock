@@ -11,7 +11,7 @@ cxx_compiler:
 libiconv:
 - '1'
 libxml2:
-- '2.14'
+- '2.15'
 perl:
 - 5.32.1
 pin_run_as_build:
@@ -19,6 +19,6 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.10.* *_cpython
+- 3.14.* *_cp314
 target_platform:
 - win-64

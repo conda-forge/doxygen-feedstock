@@ -26,15 +26,18 @@ requirements:
     - python
     - if: win
       then:
-        - libxml2  # xmllint.exe used for testing inside building step
-        # - miktex  # used for testing inside building step
         - ninja
         - winflexbison
+    - if: win and target_platform != "win-arm64"
+      then:
+        - libxml2  # xmllint.exe used for testing inside building step
+        # - miktex  # used for testing inside building step
         - m2-diffutils  # diff.exe used for testing inside building step
         - m2-libiconv  # undeclared dependency of m2-diffutils
         - m2-libintl  # undeclared dependency of m2-diffutils
         - perl  # perl.exe used for testing inside building step
-      else:
+    - if: not win
+      then:
         - bison
         - flex
         - m4

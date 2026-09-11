@@ -35,7 +35,11 @@ echo "=== dot ==="
 dot -V
 
 echo "=== ghostscript ==="
-gswin64c --version
+if /I "%target_platform%"=="win-arm64" (
+    where gswin64c >nul 2>&1 && gswin64c --version
+) else (
+    gswin64c --version
+)
 
 :: cmake
 cmake -G "Ninja" ^
